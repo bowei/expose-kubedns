@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/load-balancer-type: "Internal"
+  name: external-kubedns-udp
+  namespace: kube-system
+spec:
+  ports:
+  - name: dns
+    port: 53
+    protocol: UDP
+    targetPort: dns
+  selector:
+    app: external-kubedns
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/load-balancer-type: "Internal"
+  name: external-kubedns-tcp
+  namespace: kube-system
+spec:
+  ports:
+  - name: dns-tcp
+    port: 53
+    protocol: TCP
+    targetPort: dns-tcp
+  selector:
+    app: external-kubedns
+  type: LoadBalancer
