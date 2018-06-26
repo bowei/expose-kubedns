@@ -4,6 +4,8 @@ This setup will create a kubedns instance that exposes Kubernetes service mappin
 
 Caveats: ILB cannot share the same IP between the UDP and TCP DNS services, meaning this will be limited to UDP-based name resolution.
 
+![Block diagram](block-diagram.png)
+
 ## Setup
 
 ### Service producer cluster
